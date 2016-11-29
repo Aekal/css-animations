@@ -1,0 +1,70 @@
+@import 'reset';
+
+body {
+	background: url("../img/nice_snow.png");
+}
+
+header {
+	text-align: center;
+
+	h1 {
+		font-size: 32px;
+		margin: 20px 0;
+	}
+
+	ul {
+		list-style-type: none;
+	}
+
+	li {
+		display: inline-block;
+	}
+
+	a {
+		font-size: 20px;
+		color: #000000;
+		display: inline-block;
+		padding: 6px;
+		margin: 0 5px;
+		border: 1px solid black;
+		border-radius: 5px;
+		text-decoration: none;
+		transition: 0.2s;
+		&:hover {
+			color: #FFFFFF;
+			background-color: deepskyblue;
+		}
+	}
+}
+
+.gears-container {
+	width: 450px;
+	height: 550px;
+	margin: 50px auto;
+	animation: fade 0.5s;
+	position: relative;
+
+	.gear {
+		position: relative;
+		animation: rotate 6s 0.5s linear infinite;
+		&:nth-child(2) {
+			animation-direction: reverse;
+			top: 125px;
+			left: -62px;
+		}
+		&:nth-child(3) {
+			top: 80px;
+			left: 60px;
+		}
+	}
+}
+
+@keyframes rotate {
+	0% {transform: rotateZ(0deg)}
+	100% {transform: rotateZ(360deg)}
+}
+
+@keyframes fade {
+	0% {opacity: 0}
+	100% {opacity: 1}
+}
