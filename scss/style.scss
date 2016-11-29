@@ -12,22 +12,15 @@ header {
 		margin: 20px 0;
 	}
 
-	ul {
-		list-style-type: none;
-	}
-
-	li {
-		display: inline-block;
-	}
-
-	a {
+	button {
+		background: none;
 		font-size: 20px;
-		color: #000000;
 		display: inline-block;
 		padding: 6px;
 		margin: 0 5px;
 		border: 1px solid black;
 		border-radius: 5px;
+		cursor: pointer;
 		text-decoration: none;
 		transition: 0.2s;
 		&:hover {
@@ -37,12 +30,17 @@ header {
 	}
 }
 
-.gears-container {
+.wrapper {
+	text-align: center;
+	margin: 50px 0;
+}
+
+#gears-container {
+	display: none;
 	width: 450px;
 	height: 550px;
 	margin: 50px auto;
-	animation: fade 0.5s;
-	position: relative;
+	animation: fade 1s;
 
 	.gear {
 		position: relative;
@@ -54,9 +52,50 @@ header {
 		}
 		&:nth-child(3) {
 			top: 80px;
-			left: 60px;
+			left: -50px;
 		}
 	}
+}
+
+#cards-container {
+	// display: none;
+	animation: fade 1s;
+	margin: 0 auto;
+
+	li {
+		position: relative;
+		display: inline-block;
+		margin: 5px;
+		&:hover .front{
+			animation: flip 0.3s forwards;
+		}
+		&:hover .back{
+			animation: flip 0.3s 0.3s reverse forwards;
+		}
+
+		.card {
+			width: 150px;
+			height: 220px;
+			border: 1px solid black;
+			border-radius: 5px;
+		}
+
+		.front {
+			position: absolute;
+			background-color: green;
+		}
+
+		.back {
+			transform: rotateY(90deg);
+			background-color: orange;
+		}
+	}
+
+}
+
+@keyframes flip {
+	0% {transform: rotateY(0deg)}
+	100% {transform: rotateY(90deg)}
 }
 
 @keyframes rotate {
