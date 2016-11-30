@@ -8,8 +8,8 @@ header {
 	text-align: center;
 
 	h1 {
-		font-size: 32px;
-		margin: 20px 0;
+		font-size: 42px;
+		margin: 30px 0;
 	}
 
 	button {
@@ -58,7 +58,7 @@ header {
 }
 
 #cards-container {
-	// display: none;
+	display: none;
 	animation: fade 1s;
 	margin: 0 auto;
 
@@ -74,15 +74,18 @@ header {
 		}
 
 		.card {
+			font-size: 20px;
+			line-height: 220px;
 			width: 150px;
 			height: 220px;
 			border: 1px solid black;
 			border-radius: 5px;
+			box-shadow: 2px 2px 10px black;
 		}
 
 		.front {
 			position: absolute;
-			background-color: green;
+			background-color: #9cbe3d;
 		}
 
 		.back {
@@ -91,6 +94,31 @@ header {
 		}
 	}
 
+}
+
+#popup-container {
+	display: none;
+	margin: 0 15px;
+
+	.popup {
+		animation: slide 1s cubic-bezier(.06,.81,.32,.87) forwards,
+							 fade 2s,
+							 bounce 4s 4s infinite linear;
+		transform: translateY(-400px);
+		box-shadow: 2px 2px 20px #000000;
+		box-sizing: border-box;
+		border-radius: 10px;
+		padding: 20px;
+		color: #FFFFFF;
+		margin: 0 auto;
+		max-width: 450px;
+		background: rgba(0, 0, 0, 0.7);
+
+		h2 {
+			font-size: 30px;
+			margin-bottom: 10px;
+		}
+	}
 }
 
 @keyframes flip {
@@ -106,4 +134,16 @@ header {
 @keyframes fade {
 	0% {opacity: 0}
 	100% {opacity: 1}
+}
+
+@keyframes slide {
+	0% {transform: translateY(-400px)}
+	100% {transform: translateY(10px);}
+}
+
+@keyframes bounce {
+	0% {transform: translateY(10px);}
+	5% {transform: translateY(0px);}
+	10% {transform: translateY(10px);}
+	100% {transform: translateY(10px);}
 }
