@@ -41,10 +41,14 @@ header {
 	height: 550px;
 	margin: 50px auto;
 	animation: fade 1s;
+	cursor: pointer;
 
 	.gear {
 		position: relative;
 		animation: rotate 6s 0.5s linear infinite;
+		&.is-paused {
+			animation-play-state: paused;
+		}
 		&:nth-child(2) {
 			animation-direction: reverse;
 			top: 125px;
@@ -144,6 +148,5 @@ header {
 @keyframes bounce {
 	0% {transform: translateY(10px);}
 	5% {transform: translateY(0px);}
-	10% {transform: translateY(10px);}
-	100% {transform: translateY(10px);}
+	10%, 100% {transform: translateY(10px);}
 }
