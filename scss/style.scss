@@ -125,6 +125,41 @@ header {
 	}
 }
 
+#menu-container {
+	animation: fade 1s;
+
+	ul {
+		> li {
+			width: 70px;
+			height: 20px;
+			display: inline-block;
+			position: relative;
+			font-size: 20px;
+			padding: 10px;
+			background-color: #3c3c3c;;
+			color: #FFFFFF;
+			cursor: pointer;
+			&:hover ol li {
+				display: block;
+			}
+		}
+	}
+
+	ol {
+		position: absolute;
+		left: 0;
+		top: 40px;
+
+		li {
+			cursor: pointer;
+			width: 70px;
+			display: none;
+			padding: 10px;
+			background-color: #6b6b6b;
+		}
+	}
+}
+
 @keyframes flip {
 	0% {transform: rotateY(0deg)}
 	100% {transform: rotateY(90deg)}
