@@ -17,7 +17,7 @@ header {
 		font-size: 20px;
 		display: inline-block;
 		padding: 6px;
-		margin: 0 5px;
+		margin: 5px;
 		border: 1px solid black;
 		border-radius: 5px;
 		cursor: pointer;
@@ -107,7 +107,7 @@ header {
 	.popup {
 		animation: slide 1s cubic-bezier(.06,.81,.32,.87) forwards,
 							 fade 2s,
-							 bounce 4s 4s infinite linear;
+							 bounce 3s 3s infinite linear;
 		transform: translateY(-400px);
 		box-shadow: 2px 2px 20px #000000;
 		box-sizing: border-box;
@@ -126,22 +126,35 @@ header {
 }
 
 #menu-container {
+	display: none;
 	animation: fade 1s;
 
 	ul {
+		display: flex;
+		justify-content: center;
+
 		> li {
-			width: 70px;
+			width: 90px;
 			height: 20px;
 			display: inline-block;
 			position: relative;
 			font-size: 20px;
 			padding: 10px;
-			background-color: #3c3c3c;;
+			background-color: #3c3c3c;
 			color: #FFFFFF;
 			cursor: pointer;
-			&:hover ol li {
-				display: block;
+			&:hover {
+				background-color: #3c3c3c + 10;
 			}
+			&:hover ol
+				li {
+					display: block;
+					@for $i from 1 through 6 {
+						&:nth-child(#{$i}) {
+							animation: menu 150ms (150ms*($i - 1)) forwards;
+						}
+					}
+				}
 		}
 	}
 
@@ -149,13 +162,22 @@ header {
 		position: absolute;
 		left: 0;
 		top: 40px;
+		width: 100%;
 
 		li {
+			transform: scale(0);
 			cursor: pointer;
-			width: 70px;
 			display: none;
 			padding: 10px;
 			background-color: #6b6b6b;
+			border: 1px solid #3c3c3c + 20;
+			border-top: none;
+			&:hover {
+				background-color: #6b6b6b + 20;
+			}
+			&:last-child {
+				border-bottom: 0px;
+			}
 		}
 	}
 }
@@ -184,4 +206,25 @@ header {
 	0% {transform: translateY(10px);}
 	5% {transform: translateY(0px);}
 	10%, 100% {transform: translateY(10px);}
+}
+
+@keyframes menu {
+	0% {
+		opacity: 0;
+		transform: scale(0);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@media all and (max-width: 400px) {
+	#menu-container {
+		ul {
+			> li {
+				padding: 10px 0;
+			}
+		}
+}
 }
