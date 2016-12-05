@@ -2,9 +2,11 @@
 
 body {
 	background: url("../img/nice_snow.png");
+	font-family: 'Open Sans', sans-serif;
 }
 
 header {
+	overflow: hidden;
 	text-align: center;
 
 	h1 {
@@ -14,6 +16,7 @@ header {
 
 	button {
 		background: none;
+		font-family: 'Open Sans', sans-serif;
 		font-size: 20px;
 		display: inline-block;
 		padding: 6px;
@@ -32,7 +35,7 @@ header {
 
 .wrapper {
 	text-align: center;
-	margin: 50px 0;
+	margin-top: 50px;
 }
 
 #gears-container {
@@ -102,25 +105,45 @@ header {
 
 #popup-container {
 	display: none;
-	margin: 0 15px;
+	padding: 20px;
+	overflow: hidden;
+	height: calc(100vh - 260px);
+	animation: slide 1s cubic-bezier(.06,.81,.32,.87) forwards,
+						 fade 2s;
+						 transform: translateY(-400px);
 
 	.popup {
-		animation: slide 1s cubic-bezier(.06,.81,.32,.87) forwards,
-							 fade 2s,
-							 bounce 3s 3s infinite linear;
-		transform: translateY(-400px);
 		box-shadow: 2px 2px 20px #000000;
 		box-sizing: border-box;
 		border-radius: 10px;
 		padding: 20px;
 		color: #FFFFFF;
 		margin: 0 auto;
-		max-width: 450px;
+		max-width: 350px;
 		background: rgba(0, 0, 0, 0.7);
+		&.drop {
+			animation: drop 5s forwards ease;
+			transform-origin: left top;
+		}
 
 		h2 {
 			font-size: 30px;
 			margin-bottom: 10px;
+		}
+
+		button {
+			animation: shake 2s 2s infinite ease;
+			margin-top: 15px;
+			cursor: pointer;
+			width: 80px;
+			height: 30px;
+			border: 1px solid #49b4e3 - 50;
+			border-radius: 6px;
+			background-color: #49b4e3 - 30;
+			color: #FFFFFF;
+			&:hover {
+				background-color: #49b4e3 - 20;
+			}
 		}
 	}
 }
@@ -175,9 +198,6 @@ header {
 			&:hover {
 				background-color: #6b6b6b + 20;
 			}
-			&:last-child {
-				border-bottom: 0px;
-			}
 		}
 	}
 }
@@ -199,13 +219,18 @@ header {
 
 @keyframes slide {
 	0% {transform: translateY(-400px)}
-	100% {transform: translateY(10px);}
+	100% {transform: translateY(10px)}
 }
 
 @keyframes bounce {
-	0% {transform: translateY(10px);}
-	5% {transform: translateY(0px);}
-	10%, 100% {transform: translateY(10px);}
+	0%, 10%, 100% {transform: translateY(0px)}
+	5% {transform: translateY(-5px)}
+}
+
+@keyframes shake {
+	0%, 10%, 20%, 100% {transform: rotateZ(0deg)}
+	5% {transform: rotateZ(5deg)}
+	15% {transform: rotateZ(-5deg)}
 }
 
 @keyframes menu {
@@ -216,6 +241,16 @@ header {
 	100% {
 		opacity: 1;
 		transform: scale(1);
+	}
+}
+
+@keyframes drop {
+	0% {transform: rotateZ(0deg)}
+	30% {transform: rotateZ(75deg)}
+	60%, 70% {transform: rotateZ(60deg)}
+	100% {
+		transform: rotateZ(90deg);
+		transform: translateY(1000px);
 	}
 }
 
