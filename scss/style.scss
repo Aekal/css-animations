@@ -1,7 +1,9 @@
 @import 'reset';
+$menu: #f1a600;
+$popup: #49b4e3 - 30;
 
 body {
-	background: url("../img/nice_snow.png");
+	background: url("../img/brickwall.png");
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -15,20 +17,27 @@ header {
 	}
 
 	button {
-		background: none;
+		color: #FFFFFF;
+		background-color: $menu;
 		font-family: 'Open Sans', sans-serif;
 		font-size: 20px;
 		display: inline-block;
 		padding: 6px;
 		margin: 5px;
-		border: 1px solid black;
+		height: 41px;
+		border: 1px solid $menu - 50;
 		border-radius: 5px;
 		cursor: pointer;
 		text-decoration: none;
-		transition: 0.2s;
 		&:hover {
 			color: #FFFFFF;
-			background-color: deepskyblue;
+			background-color: $menu - 10;
+		}
+		&:focus {
+			outline: none;
+			border-color: $menu - 100;
+			background-color: $menu - 20;
+			box-shadow: inset 0px 0px 20px 1px $menu - 50;
 		}
 	}
 }
@@ -39,6 +48,7 @@ header {
 }
 
 #gears-container {
+	transform-origin: top;
 	display: none;
 	width: 450px;
 	height: 550px;
@@ -107,10 +117,10 @@ header {
 	display: none;
 	padding: 20px;
 	overflow: hidden;
-	height: calc(100vh - 260px);
+	height: calc(100vh - 243px);
 	animation: slide 1s cubic-bezier(.06,.81,.32,.87) forwards,
 						 fade 2s;
-						 transform: translateY(-400px);
+	transform: translateY(-400px);
 
 	.popup {
 		box-shadow: 2px 2px 20px #000000;
@@ -137,12 +147,16 @@ header {
 			cursor: pointer;
 			width: 80px;
 			height: 30px;
-			border: 1px solid #49b4e3 - 50;
+			border: 1px solid $popup - 30;
 			border-radius: 6px;
-			background-color: #49b4e3 - 30;
+			background-color: $popup;
 			color: #FFFFFF;
 			&:hover {
-				background-color: #49b4e3 - 20;
+				background-color: $popup - 10;
+			}
+			&:focus {
+				outline: none;
+				background-color: $popup - 20;
 			}
 		}
 	}
@@ -219,7 +233,7 @@ header {
 
 @keyframes slide {
 	0% {transform: translateY(-400px)}
-	100% {transform: translateY(10px)}
+	100% {transform: translateY(0px)}
 }
 
 @keyframes bounce {
@@ -254,6 +268,7 @@ header {
 	}
 }
 
+// MOBILE
 @media all and (max-width: 400px) {
 	#menu-container {
 		ul {
@@ -261,5 +276,9 @@ header {
 				padding: 10px 0;
 			}
 		}
-}
+	}
+
+	.wrapper {
+		margin: 10px 0;
+	}
 }
