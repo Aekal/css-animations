@@ -216,6 +216,20 @@ header {
 	}
 }
 
+footer {
+	text-align: center;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	padding: 4px;
+	background-color: rgba(#FFFFFF, 0.6);
+	font-size: 14px;
+
+	a {
+		color: #000000;
+	}
+}
+
 @keyframes flip {
 	0% {transform: rotateY(0deg)}
 	100% {transform: rotateY(90deg)}
