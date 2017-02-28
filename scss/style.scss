@@ -56,6 +56,13 @@ header {
 	animation: fade 1s;
 	cursor: pointer;
 
+	@media (max-width: 500px) {
+		position: relative;
+		left: 20%;
+		transform-origin: top left;
+		transform: scale(0.5);
+	}
+
 	.gear {
 		position: relative;
 		animation: rotate 6s 0.5s linear infinite;
